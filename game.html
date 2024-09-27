@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the Apples Game</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        canvas {
+            background-color: lightblue;
+            display: block;
+            margin: 20px auto;
+            border: 2px solid #333;
+        }
+        h1 {
+            color: #333;
+        }
+        #score, #lives {
+            font-size: 1.2em;
+            color: #333;
+        }
+        .button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button.stop {
+            background-color: #dc3545;
+        }
+        .button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Catch the Apples!</h1>
+<canvas id="gameCanvas" width="500" height="400"></canvas>
+<p id="score">Score: 0</p>
+<p id="lives">Lives: 3</p>
+
+<!-- Game control buttons -->
+<button id="startGame" class="button">Start Game</button>
+<button id="stopGame" class="button stop">Stop Game</button>
+
+<!-- Background music element -->
+<audio id="backgroundMusic" src="background-music.mp3" preload="auto" loop></audio>
+
+<script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Background music
+    const backgroundMusic = document.getElementById('backgroundMusic');
+
+    function startBackgroundMusic() {
+        backgroundMusic.play();
+    }
+
+    function stopBackgroundMusic() {
+        backgroundMusic.pause();
+        backgroundMusic.currentTime = 0; // Reset the music to the start
+    }
+
+    // Game state
+    let gameRunning = false;
+    let lives = 3;
+
+    // Basket properties
+    const basket = {
+        width: 80,
+        height: 20,
+        x: canvas.width / 2 - 40,
+        y: canvas.height - 30,
+        dx: 5
+    };
+
+    // Apple properties
+    let apples = [];
+    const appleRadius = 10;
+    const appleSpeed = 2;
+
+    // Score
+    let score = 0;
+
+    // Create new apple
+    function createApple() {
+        const x = Math.random() * (canvas.width - appleRadius * 2) + appleRadius;
+        apples.push({ x: x, y: 0 });
+    }
+
+    // Draw the basket
+    function drawBasket() {
+        ctx.fillStyle = '#8B4513';
+        ctx.fillRect(basket.x, basket.y, basket.width, basket.height);
+    }
+
+    // Draw an apple
+    function drawApple(apple) {
+        ctx.beginPath();
+        ctx.arc(apple.x, apple.y, appleRadius, 0, Math.PI * 2);
+        ctx.fillStyle = 'red';
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    // Draw lives
+    function drawLives() {
+        document.getElementById('lives').textContent = 'Lives: ' + lives;
+    }
+
+    // Move basket left or right
+    function moveBasket() {
+        if (rightPressed && basket.x + basket.width < canvas.width) {
+            basket.x += basket.dx;
+        }
+        if (leftPressed && basket.x > 0) {
+            basket.x -= basket.dx;
+        }
+    }
+
+    // Move apples and check for collision with basket
+    function moveApples() {
+        apples.forEach((apple, index) => {
+            apple.y += appleSpeed;
+
+            // Check if apple is caught by the basket
+            if (apple.y + appleRadius > basket.y && apple.x > basket.x && apple.x < basket.x + basket.width) {
+                apples.splice(index, 1);
+                score++;
+                document.getElementById('score').textContent = 'Score: ' + score;
+            }
+
+            // Remove apple if it goes off the canvas
+            if (apple.y > canvas.height) {
+                apples.splice(index, 1);
+                lives--;
+                drawLives();
+                if (lives <= 0) {
+                    gameRunning = false;
+                    stopBackgroundMusic();
+                    alert('Game Over! Your score: ' + score);
+                }
+            }
+        });
+    }
+
+    // Game loop
+    function gameLoop() {
+        if (!gameRunning) return;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        drawBasket();
+        apples.forEach(drawApple);
+
+        moveBasket();
+        moveApples();
+
+        requestAnimationFrame(gameLoop);
+    }
+
+    // Controls
+    let rightPressed = false;
+    let leftPressed = false;
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') rightPressed = true;
+        if (e.key === 'ArrowLeft') leftPressed = true;
+    });
+    document.addEventListener('keyup', function (e) {
+        if (e.key === 'ArrowRight') rightPressed = false;
+        if (e.key === 'ArrowLeft') leftPressed = false;
+    });
+
+    // Game control buttons
+    document.getElementById('startGame').addEventListener('click', function() {
+        if (!gameRunning) {
+            gameRunning = true;
+            lives = 3;
+            drawLives();
+            score = 0;
+            document.getElementById('score').textContent = 'Score: ' + score;
+            startBackgroundMusic();
+            setInterval(createApple, 1500); // Create an apple every 1.5 seconds
+            gameLoop();
+        }
+    });
+
+    document.getElementById('stopGame').addEventListener('click', function() {
+        gameRunning = false;
+        stopBackgroundMusic();
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+/* General styles for the body */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Header styling */
+.header {
+  text-align: center;
+  padding: 50px;
+  background-color: #333;
+  color: white;
+}
+.header h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+.header p {
+  font-size: 1.2em;
+  color: #ccc;
+}
+
+/* Social icons styling */
+.social-icons {
+  text-align: center;
+  margin-top: 30px;
+}
+.social-icons a {
+  text-decoration: none;
+  margin: 0 10px;
+  color: #222;
+}
+.social-icons img {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+
+/* Game button styling */
+.game-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #28a745;
+  color: white;
+  font-size: 1.5em;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 20px auto;
+  transition: background-color 0.3s ease;
+}
+.game-button:hover {
+  background-color: #218838;
+}
+
+/* Footer styling */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  font-size: 1em;
+}
+
+/* Canvas styling for the game */
+canvas {
+  background-color: #e0f7fa;
+  display: block;
+  margin: 30px auto;
+  border: 3px solid #333;
+  border-radius: 10px;
+}
+
+/* Game score styling */
+#score {
+  text-align: center;
+  font-size: 1.5em;
+  color: #333;
+  margin-top: -10px;
+}

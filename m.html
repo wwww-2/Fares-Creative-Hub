@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Page</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            text-align: center;
+            padding: 50px;
+            background-color: #222;
+            color: white;
+        }
+        .header h1 {
+            font-size: 3em;
+        }
+        .social-icons {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .social-icons a {
+            text-decoration: none;
+            margin: 0 10px;
+            color: #222;
+        }
+        .social-icons img {
+            width: 50px;
+            height: 50px;
+        }
+        .game-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            font-size: 1.2em;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .game-button:hover {
+            background-color: #218838;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #222;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        /* Styles for Spline viewer */
+        .spline-viewer-container {
+            width: 100%;
+            height: 500px; /* Adjust height as needed */
+            margin: 20px auto;
+            background: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Welcome to My Page!</h1>
+        <p>Connect with me on social media</p>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://www.instagram.com/l3.s" target="_blank">
+            <img src="image/instagrm.png" alt="Instagram">
+        </a>
+        <a href="https://www.tiktok.com/@f.o" target="_blank">
+            <img src="image/tiktok-logo3.png" alt="TikTok">
+        </a>
+        <a href="https://www.snapchat.com/add/lxu.7" target="_blank">
+            <img src="image/Logo-Snapchat.png" alt="Snapchat">
+        </a>
+    </div>
+
+    <a href="game.html" class="game-button">Play My Game!</a>
+
+    <!-- Spline Viewer -->
+    <div class="spline-viewer-container">
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.28/build/spline-viewer.js"></script>
+        <spline-viewer url="https://my.spline.design/macbookprocopy-2380bdb2b34ce6445498abf832792260"></spline-viewer>
+    </div>
+
+    <footer>
+        <p>&copy;Made in 2024 by Fares.</p>
+    </footer>
+
+</body>
+</html>
