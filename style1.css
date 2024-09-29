@@ -22,8 +22,13 @@ canvas {
     margin: 20px auto; /* Center canvas with margin */
 }
 
+/* Basket CSS transition for smooth movement */
+canvas {
+    transition: transform 0.1s ease-in-out;
+}
+
 /* Score and lives styles */
-#score, #lives {
+#score, #lives, #highScore {
     font-size: 1.5em; /* Larger text for better visibility */
     color: #333;
 }
@@ -63,41 +68,3 @@ canvas {
     transition: background-color 0.3s; /* Smooth background transition */
 }
 
-.button:hover {
-    background-color: #4cae4c; /* Darker green on hover */
-}
-
-/* Media queries for responsive adjustments */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 1.5em; /* Smaller title on mobile */
-    }
-
-    #score, #lives {
-        font-size: 1.2em; /* Smaller score/lives text */
-    }
-
-    .button-img {
-        width: 25vw; /* Use percentage for button width on mobile */
-        max-width: 40px; /* Limit button size */
-    }
-
-    .button {
-        font-size: 1em; /* Adjust button text size for mobile */
-    }
-}
-
-/* Extra styles for larger screens */
-@media (min-width: 601px) {
-    h1 {
-        font-size: 2.5em; /* Larger title for desktop */
-    }
-
-    #score, #lives {
-        font-size: 1.5em; /* Score and lives size for desktop */
-    }
-
-    .button {
-        font-size: 1.5em; /* Larger button text size for desktop */
-    }
-}
