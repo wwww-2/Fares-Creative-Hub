@@ -1,0 +1,103 @@
+/* Global styles */
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light background for better contrast */
+}
+
+/* Heading style */
+h1 {
+    color: #333;
+    font-size: 2em; /* Adjusted for visibility */
+}
+
+/* Canvas styles */
+canvas {
+    width: 90%; /* Make canvas responsive */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 500px; /* Set a max width for larger screens */
+    border: 2px solid #333;
+    margin: 20px auto; /* Center canvas with margin */
+}
+
+/* Score and lives styles */
+#score, #lives {
+    font-size: 1.5em; /* Larger text for better visibility */
+    color: #333;
+}
+
+/* Button container */
+.button-container {
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    margin: 20px 0; /* Add margin for spacing */
+}
+
+/* Button images */
+.button-img {
+    width: 15vw; /* Use viewport width for responsiveness */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 50px; /* Set a max width to avoid too large buttons */
+    max-height: 50px; /* Set a max height to avoid too large buttons */
+    cursor: pointer;
+    margin: 10px; /* Margin for spacing */
+}
+
+.button-img:hover {
+    opacity: 0.8; /* Slight fade effect on hover */
+}
+
+/* Button styles */
+.button {
+    width: 80%; /* Take 80% of the available width */
+    max-width: 200px; /* Set a max width for larger screens */
+    font-size: 1.2em; /* Adjust font size for mobile */
+    margin: 10px; /* Add margin for spacing */
+    padding: 10px; /* Add padding for a better touch target */
+    background-color: #5cb85c; /* Bootstrap-style green background */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.button:hover {
+    background-color: #4cae4c; /* Darker green on hover */
+}
+
+/* Media queries for responsive adjustments */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5em; /* Smaller title on mobile */
+    }
+
+    #score, #lives {
+        font-size: 1.2em; /* Smaller score/lives text */
+    }
+
+    .button-img {
+        width: 25vw; /* Use percentage for button width on mobile */
+        max-width: 40px; /* Limit button size */
+    }
+
+    .button {
+        font-size: 1em; /* Adjust button text size for mobile */
+    }
+}
+
+/* Extra styles for larger screens */
+@media (min-width: 601px) {
+    h1 {
+        font-size: 2.5em; /* Larger title for desktop */
+    }
+
+    #score, #lives {
+        font-size: 1.5em; /* Score and lives size for desktop */
+    }
+
+    .button {
+        font-size: 1.5em; /* Larger button text size for desktop */
+    }
+}
