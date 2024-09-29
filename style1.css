@@ -15,7 +15,7 @@ h1 {
 
 /* Canvas styles */
 canvas {
-    width: 90%; /* Make canvas responsive */
+    width: 100%; /* Make canvas fully responsive */
     height: auto; /* Maintain aspect ratio */
     max-width: 500px; /* Set a max width for larger screens */
     border: 2px solid #333;
@@ -37,10 +37,10 @@ canvas {
 
 /* Button images */
 .button-img {
-    width: 15vw; /* Use viewport width for responsiveness */
+    width: 20vw; /* Use viewport width for responsiveness */
     height: auto; /* Maintain aspect ratio */
-    max-width: 50px; /* Set a max width to avoid too large buttons */
-    max-height: 50px; /* Set a max height to avoid too large buttons */
+    max-width: 60px; /* Set a max width to avoid too large buttons */
+    max-height: 60px; /* Set a max height to avoid too large buttons */
     cursor: pointer;
     margin: 10px; /* Margin for spacing */
 }
@@ -55,7 +55,7 @@ canvas {
     max-width: 200px; /* Set a max width for larger screens */
     font-size: 1.2em; /* Adjust font size for mobile */
     margin: 10px; /* Add margin for spacing */
-    padding: 10px; /* Add padding for a better touch target */
+    padding: 15px 20px; /* Add padding for a better touch target */
     background-color: #5cb85c; /* Bootstrap-style green background */
     color: white; /* White text */
     border: none; /* Remove default border */
