@@ -28,17 +28,15 @@
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
 
-    // Load the background image
+    // Load images
     const backgroundImage = new Image();
-    backgroundImage.src = 'image/pixel-art-2-pic-1280x720.jpg'; // Replace with the correct path to your background image
+    backgroundImage.src = 'image/pixel-art-2-pic-1280x720.jpg'; // Background image path
 
-    // Load the apple image
     const appleImage = new Image();
-    appleImage.src = 'image/output-onlinepngtools.png'; // Replace with the correct path to your apple image
+    appleImage.src = 'image/output-onlinepngtools.png'; // Apple image path
 
-    // Load the basket image
     const basketImage = new Image();
-    basketImage.src = 'image/basket.png'; // Replace with the correct path to your basket image
+    basketImage.src = 'image/basket.png'; // Basket image path
 
     // Background music
     const backgroundMusic = document.getElementById('backgroundMusic');
@@ -55,23 +53,21 @@
     // Game state
     let gameRunning = false;
     let lives = 3;
+    let score = 0;
 
     // Basket properties
     const basket = {
         width: 80,
-        height: 50,  // Adjust height to match your image
+        height: 50,
         x: canvas.width / 2 - 40,
-        y: canvas.height - 60,  // Adjust y to accommodate the image size
+        y: canvas.height - 60,
         dx: 5
     };
 
     // Apple properties
     let apples = [];
-    const appleRadius = 20; // Adjust the radius for the image size
+    const appleRadius = 20;
     const appleSpeed = 2;
-
-    // Score
-    let score = 0;
 
     // Create new apple
     function createApple() {
@@ -135,13 +131,9 @@
         if (!gameRunning) return;
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Draw background image
         ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-
         drawBasket();
         apples.forEach(drawApple);
-
         moveBasket();
         moveApples();
 
@@ -162,7 +154,7 @@
         if (e.key === 'ArrowLeft') leftPressed = false;
     });
 
-    // Event listeners for image controls (replacing button event listeners)
+    // Event listeners for image controls
     document.getElementById('moveLeft').addEventListener('mousedown', function() {
         leftPressed = true;
     });
