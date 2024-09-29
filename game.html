@@ -154,11 +154,17 @@
         if (e.key === 'ArrowLeft') leftPressed = false;
     });
 
-    // Event listeners for image controls
+    // Event listeners for image controls (touch and mouse support)
     document.getElementById('moveLeft').addEventListener('mousedown', function() {
         leftPressed = true;
     });
     document.getElementById('moveLeft').addEventListener('mouseup', function() {
+        leftPressed = false;
+    });
+    document.getElementById('moveLeft').addEventListener('touchstart', function() {
+        leftPressed = true;
+    });
+    document.getElementById('moveLeft').addEventListener('touchend', function() {
         leftPressed = false;
     });
 
@@ -166,6 +172,12 @@
         rightPressed = true;
     });
     document.getElementById('moveRight').addEventListener('mouseup', function() {
+        rightPressed = false;
+    });
+    document.getElementById('moveRight').addEventListener('touchstart', function() {
+        rightPressed = true;
+    });
+    document.getElementById('moveRight').addEventListener('touchend', function() {
         rightPressed = false;
     });
 
@@ -183,7 +195,25 @@
         }
     });
 
+    document.getElementById('startGame').addEventListener('touchstart', function() {
+        if (!gameRunning) {
+            gameRunning = true;
+            lives = 3;
+            drawLives();
+            score = 0;
+            document.getElementById('score').textContent = 'Score: ' + score;
+            startBackgroundMusic();
+            setInterval(createApple, 1500); // Create an apple every 1.5 seconds
+            gameLoop();
+        }
+    });
+
     document.getElementById('stopGame').addEventListener('click', function() {
+        gameRunning = false;
+        stopBackgroundMusic();
+    });
+
+    document.getElementById('stopGame').addEventListener('touchstart', function() {
         gameRunning = false;
         stopBackgroundMusic();
     });
