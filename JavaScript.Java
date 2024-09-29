@@ -91,6 +91,14 @@ document.getElementById('moveRight').addEventListener('touchend', function() {
     rightPressed = false;
 });
 
+// Prevent default drag behavior for images
+document.getElementById('moveLeft').addEventListener('dragstart', function(e) {
+    e.preventDefault();
+});
+document.getElementById('moveRight').addEventListener('dragstart', function(e) {
+    e.preventDefault();
+});
+
 // Create new apple
 function createApple() {
     const x = Math.random() * (canvas.width - appleRadius * 2) + appleRadius;
