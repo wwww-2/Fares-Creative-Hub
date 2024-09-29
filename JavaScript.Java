@@ -30,11 +30,12 @@ let gameRunning = false;
 let lives = 3;
 let highScore = 0;
 let score = 0;
+let appleInterval; // Store the interval ID
 
 // Basket properties
 const basket = {
     width: 80,
-    height: 50,  
+    height: 50,
     x: canvas.width / 2 - 40,
     y: canvas.height - 60,
     dx: 5
@@ -140,6 +141,7 @@ function moveApples() {
             // Update high score
             if (score > highScore) {
                 highScore = score;
+                localStorage.setItem('highScore', highScore); // Save high score to local storage
                 drawHighScore();
             }
         }
@@ -151,6 +153,7 @@ function moveApples() {
             drawLives();
             if (lives <= 0) {
                 gameRunning = false;
+                clearInterval(appleInterval); // Clear interval when game stops
                 stopBackgroundMusic();
                 alert('Game Over! Your score: ' + score);
             }
@@ -195,15 +198,17 @@ document.getElementById('startGame').addEventListener('click', function() {
         document.getElementById('score').textContent = 'Score: ' + score;
         drawHighScore();
         startBackgroundMusic();
-        setInterval(createApple, 1500); // Create an apple every 1.5 seconds
+        appleInterval = setInterval(createApple, 1500); // Create an apple every 1.5 seconds
         gameLoop();
     }
 });
 
 document.getElementById('stopGame').addEventListener('click', function() {
     gameRunning = false;
+    clearInterval(appleInterval); // Stop apple creation
     stopBackgroundMusic();
 });
 
-// Initial call to draw high score
-drawHighScore();
+// Load high score from local storage
+highScore = localStorage.getItem('highScore') || 0;
+drawHighScore(); // Initial call to draw high score
