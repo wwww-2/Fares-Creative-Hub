@@ -48,6 +48,14 @@ canvas {
     max-height: 60px; /* Set a max height to avoid too large buttons */
     cursor: pointer;
     margin: 10px; /* Margin for spacing */
+    
+    /* Disable drag for the button images */
+    user-drag: none; /* Prevents dragging the image */
+    user-select: none; /* Prevents selection of the image */
+    -webkit-user-drag: none; /* For Safari */
+    -webkit-user-select: none; /* For Safari */
+    -moz-user-select: none; /* For Firefox */
+    -ms-user-select: none; /* For Internet Explorer/Edge */
 }
 
 .button-img:hover {
@@ -68,3 +76,6 @@ canvas {
     transition: background-color 0.3s; /* Smooth background transition */
 }
 
+.button:hover {
+    background-color: #4cae4c; /* Darker green on hover */
+}
